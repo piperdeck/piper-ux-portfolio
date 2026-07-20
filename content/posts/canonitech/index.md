@@ -1,5 +1,4 @@
 +++
-draft = true
 date = '2026-07-15'
 title = "How to Make a Tech Explainer That's Actually Good"
 css = ["canonitech.css"]

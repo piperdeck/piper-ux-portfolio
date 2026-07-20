@@ -1,6 +1,5 @@
 +++
 date = '2026-05-11'
-draft = true
 title = 'Redesigning Notifications for LXD'
 blurb = "A perfect case study in what makes UX design a separate discipline from visual design"
 thumbnail = "notification-drawer-3.jpg"

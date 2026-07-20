@@ -1,6 +1,5 @@
 +++
 date = '2026-06-22'
-draft = true
 title = 'Visualizing networks in LXD'
 blurb = "How do you design interfaces for technical experts when you don't understand the underlying technology?"
 thumbnail = "figjam-ovn-diagram.png"
