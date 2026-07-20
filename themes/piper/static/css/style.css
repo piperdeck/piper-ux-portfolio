@@ -12,6 +12,14 @@
   font-style: oblique -11deg 0deg;
 }
 
+@font-face {
+  font-family: 'Monaspace Neon Var';
+  src: url('../fonts/Monaspace%20Neon/Monaspace%20Neon%20Var.woff2') format('woff2');
+  font-weight: 200 800;
+  font-stretch: 100% 125%;
+  font-style: oblique -11deg 0deg;
+}
+
 // * {
 //   outline: 1px solid red;
 // }
@@ -33,7 +41,7 @@ body {
 }
 
 .logo {
-  font-family: "Monaspace Neon";
+  font-family: "Monaspace Neon Var";
 }
 
 p {
