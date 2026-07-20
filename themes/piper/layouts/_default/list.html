@@ -1,0 +1,18 @@
+{{ partial "header.html" . }}
+
+<h1>{{ .Title }}</h1>
+
+{{ .Content }}
+
+{{ range.Data.Pages }}
+<article class="post-snippet">
+  <h3>
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </h3>
+	<time>
+		{{ .Date.Format "January 2, 2006" }}
+	</time>
+</article>
+{{ end }}
+
+{{ partial "footer.html" . }}

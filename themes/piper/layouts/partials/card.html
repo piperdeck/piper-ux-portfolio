@@ -1,0 +1,13 @@
+<a class="card" href="{{ .Permalink }}">
+
+    {{ with .Resources.GetMatch .Params.thumbnail }}
+        <img src="{{ .RelPermalink }}" alt="">
+    {{ end }}
+
+    <h3>{{ .Title }}</h3>
+
+    <time>{{ .Date.Format "January 2, 2006" }}</time>
+
+    <p>{{ .Params.blurb }}</p>
+    
+</a>

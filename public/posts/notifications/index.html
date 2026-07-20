@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>Redesigning Notifications for LXD | Piper Deck</title>
+
+	<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+
+	
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+
+	<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+	<script>mermaid.initialize({ 
+		startOnLoad: true,
+		theme: 'base',
+		themeVariables: {
+			
+			fontSize: '0.85rem',
+			background: '#ffffff',
+			fontFamily: 'Monaspace Xenon',
+			primaryColor: '#D9D7EA',
+			nodeBorder: '#2E294E',
+			primaryTextColor: '#000000',
+			edgeLabelBackground: '#ffffff',
+			noteBkgColor: '#d9e6ec',
+		} 
+		});</script>
+
+	
+
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="site-nav">
+    <a class="logo" href="http://macbook:1313/">
+      Piper Deck
+    </a>
+  </nav>
+</header>
+
+
+<main class="content">
+
+
+<h1>Redesigning Notifications for LXD</h1>
+
+<p>Back in 2024, I was tasked with overhauling the notification experience within LXD UI. The notifications themselves looked visually fine, but the experience of when they appeared and how one interacted with them was terrible.</p>
+<p>The process of redesigning them taught me a lot about UX, and I think it&rsquo;s a great case study of what makes UX design a distinct discipline from visual design.</p>
+<h2 id="notifications-in-lxd">Notifications in LXD</h2>
+<p>If you&rsquo;re not familiar with LXD, it&rsquo;s a hypervisor for containers and virtual machines that runs on Linux. As well as a traditional command line interface, LXD also has a UI that runs in the browser. The UI allows users to carry out actions like creating, starting, and stopping their containers and virtual machines, as well as managing other virtualization resources inside of LXD.</p>
+<p>To give feedback that an action had failed or succeeded, and to advise a user of other changes of state, LXD would frequently use onscreen notifications. On the surface, LXD&rsquo;s notifications <em>looked</em> fine, by which I mean they had a perfectly nice-looking React component that matched our brand guidelines. The problem was where they appeared, when they appeared, and how they behaved when you interacted with them.</p>
+<p>In otherwords, this was strictly a <em>user experience</em> problem, not a visual design problem.</p>
+<h3 id="improved-use-of-space">Improved use of space</h3>
+<figure>
+  <img src="notification-showing.png" alt="screenshot of lxd with a notification showing">
+  <figcaption>What notifications looked like before the redesign</figcaption>
+</figure>
+<p>Before this redesign, notifications took up the whole width of the page, and appeared inline with the main page content. So when notifications appeared, they would push down all of the content below them.</p>
+<p>This meant that if you had been about to click something when a notification appeared, you might accidentally click something else.</p>
+<p>The fix for this was pretty simple, and is common in many user interfaces you&rsquo;re familiar with: when a notification appears, it should &ldquo;float&rdquo; over the page content in an unobtrusive location onscreen, and not take up too much space. I put them in the bottom right corner of the UI.</p>
+<div class="carousel-wrapper">
+  <div class="carousel">
+    
+  <figure>
+    <img src="p1-sc1.jpg">
+    <figcaption>Wireframe</figcaption>
+  </figure>
+  <figure>
+    <img src="p1-sc2.jpg">
+    <figcaption>Intermediate design</figcaption>
+  </figure>
+  <figure>
+    <img src="p1-sc3.jpg">
+    <figcaption>Final live UI</figcaption>
+  </figure>
+
+  </div>
+  <div class="button-wrapper">
+    <button class="carousel-scroller prev" onclick="scrollCarousel(this, -1)">&lt;--</button>
+    <button class="carousel-scroller next" onclick="scrollCarousel(this, 1)">--></button>
+  </div>
+</div>
+<h3 id="retrievability">Retrievability</h3>
+<p>The other problem with the notifications we used to have, was that if two notifications appeared in quick succession, the second one would immediately dismiss the previous one, and it was impossible to retrieve. If there had been important information on that previous notification, it would be gone forever.</p>
+<p>At first, I experimented with allowing more than one notification to stack up in the corner. But this created a new problem, which was that if the notifications piled up arbitrarily high, they could block the important UI elements that often appear in the upper right of the screen.</p>
+<figure>
+  <img src="p2-sc1.jpg">
+  <figcaption>Early mockup of stacking notifications</figcaption>
+</figure>
+<p>So I ended up deciding to keep this clobbering behaviour. To make it so that a user could retrieve messages they didn&rsquo;t have time to read, I created a notification drawer that lived in the page footer.</p>
+<p>When a notification is hidden, but before it&rsquo;s fully &ldquo;dismissed&rdquo;, it lives in the notification drawer. If you want to dismiss all of your notifications, the notification drawer has a button that lets you do that in one click.</p>
+<div class="carousel-wrapper">
+  <div class="carousel">
+    
+  <figure>
+    <img src="notification-drawer-1.jpg">
+    <figcaption>A notification appears onscreen...</figcaption>
+  </figure>
+  <figure>
+    <img src="notification-drawer-2.jpg">
+    <figcaption>...and then hides after a couple seconds...</figcaption>
+  </figure>
+  <figure>
+    <img src="notification-drawer-3.jpg">
+    <figcaption>...but it can still be found in the notification drawer</figcaption>
+  </figure>
+
+  </div>
+  <div class="button-wrapper">
+    <button class="carousel-scroller prev" onclick="scrollCarousel(this, -1)">&lt;--</button>
+    <button class="carousel-scroller next" onclick="scrollCarousel(this, 1)">--></button>
+  </div>
+</div>
+<h3 id="organization">Organization</h3>
+<p>But now that I had a place where notifications could pile up indefinitely, I needed to make sure they didn&rsquo;t become too overwhelming. LXD notifications already had 4 different modes: information, warning, error, and success. I created a filter that allowed the user to show only notifications of a given mode, and dismiss them all at once.</p>
+<div class="carousel-wrapper">
+  <div class="carousel">
+    
+<figure>
+  <img src="sorting-iteration.jpg">
+  <figcaption>Early iterations of the notification drawer</figcaption>
+</figure>
+<figure>
+  <img src="sorting-demo-1.jpg">
+  <figcaption>
+    The final UI
+  </figcaption>
+</figure>
+<figure>
+  <img src="sorting-demo-2.jpg">
+  <figcaption>
+    Notifications can be filtered and bulk-dismissed with buttons at the bottom of the drawer.
+  </figcaption>
+</figure>
+
+  </div>
+  <div class="button-wrapper">
+    <button class="carousel-scroller prev" onclick="scrollCarousel(this, -1)">&lt;--</button>
+    <button class="carousel-scroller next" onclick="scrollCarousel(this, 1)">--></button>
+  </div>
+</div>
+<h2 id="thoughts">Thoughts</h2>
+<p>Notice that in this whole &ldquo;notification redesign&rdquo;, I didn&rsquo;t change the way notifications look at all. In terms of their layout, colours, and typography, the notifications looked exactly the same at the beginning of the project as at the end.</p>
+<p>And even though I designed a brand new component, all of the &ldquo;designery&rdquo; decisions, like font, colours, and iconography, button sizes, were all decisions made by someone else before I ever started this project.</p>
+<p>Despite this, the experience of using LXD and interacting with notifications was completely transformed after this redesign. Not no much in terms of how the UI looks, but in terms of what it&rsquo;s like to use it. The page content no longer jumps around awkwardly whenever something changes. The feeling of being shown some text but not being allowed to read it is gone. It system allows you to interact with it more on your own terms than before.</p>
+<p>This is a concrete example of what I try to explain when I talk to people who don&rsquo;t know what UX design is: It&rsquo;s not about aesthetics, it&rsquo;s about usability.</p>
+
+
+</main>
+	
+<footer>
+	<p>&copy;2026 Piper Deck</p>
+</footer>
+
+</body>
+</html>
+
+
+<script src="/js/script.js"></script>

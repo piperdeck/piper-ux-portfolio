@@ -1,0 +1,67 @@
++++
+date = '2026-03-19T15:45:34-04:00'
+draft = true
+title = 'OVN Networking'
++++
+
+
+## Problem
+
+- LXD needed a way to create and configure networks in the UI, including OVN networks
+    - OVN stands for Open Virtual Network
+- OVN networks are a kind of virtual network that exists in software that allows containers to communicate with each other
+- The communication that occurs over a virtual network needs to be actually happening over a real network, and the specifics of the relationship between the real network and the virtual network needs to be configurable by the user
+
+## Learning
+
+I needed to learn everything I could about how OVN worked, so I gathered a bunch of networking engineers in a room and I got them to explain it to me.
+
+How do you get engineers to explain something complicated in simple terms? Engineers know a lot of things, but it's difficult for them to know what you don't know.
+
+The trick I discovered on the OVN project is that if you just start drawing a diagram, an engineer will jump out of their seat, take the marker from you, and correct your diagram.
+
+That's how I arrived at a description of OVN networks that:
+
+1. I understood
+1. Was relevant to my specific context
+2. A room full of engineers agreed with
+
+![Chart paper diagram](./chart-paper-diagram.jpg)
+
+That diagram eventually became this diagram, which all my later work was based off of:
+
+![Figjam diagram](./figjam-ovn-diagram.png)
+
+With a rough understanding of what was going on under the hood, I felt that I was ready to start finding out more about the user needs involved.
+
+- I also realized in talking to the engineers that there were two distinct personas I needed to design for.
+    - There was the LXD administrator, who was setting up the physical networks and making them available
+    - And there was the LXD user, who just created OVN networks, chose which physical network they should be on, and attached their instances to it.
+- Creating a physical network is different from creating and OVN network.
+    - When you create a physical network in LXD, what you're doing is modelling a network that already exists. You're not choosing what properties you want the network to have, you're just reporting the properties that already exist to LXD so that LXD knows about them.
+    - When you create an OVN network, you're generating a brand new entity and choosing what properties you want it to have.
+    - The one case is like a doctor creating a new patient in their database. The second is like an author "creating" a new character in their book.
+    - The purpose of an administrator creating a physical network is to set up LXD so that "consumers" can create their ovn networks.
+- Another challenging aspect of this process of designing for a highly technical task was that when I needed design review from other designers, I needed to catch them up on all the technical context.
+    - Not only did I need to learn to understand OVN networks, I needed to learn how to explain them as well.
+    - For this purpose, I developed a set of diagrams that I used whenever I needed to quickly onboard someone:
+
+![Onboarding diagrams](./onboarding-ovn-diagram.png)
+
+## Design Process
+
+I assembled a list of all the parameters that needed to be configurable in the final design, and I made paper prototypes for rapid iteration
+
+![Paper prototyping](./paper-prototype-2.jpg)
+
+From there, there were multiple rounds of iteration in Figma
+
+![Design iteration overview](./design-overview.png)
+
+During that iteration, I realized that the user would benefit from a visualization of their network, similarly to how I was visualizing the network in my diagrams. I experimented with several visualization systems.
+
+![Iterating network graphs](./visualization-iteration.png)
+
+Finally, the design that culminated from all my research and iteration:
+
+![Final design](./final-design.png)

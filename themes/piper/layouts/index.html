@@ -1,0 +1,13 @@
+{{ partial "header.html" . }}
+
+{{ .Content }}
+
+<h2>Posts</h2>
+
+<div class="card-grid">
+    {{ range .Site.RegularPages.ByDate.Reverse }}
+        {{ partial "card.html" . }}
+    {{ end }}
+</div>
+
+{{ partial "footer.html" . }}

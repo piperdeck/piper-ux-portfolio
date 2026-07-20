@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on Piper Deck</title>
+		<link>http://macbook:1313/posts/</link>
+		<description>Recent content in Posts on Piper Deck</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 15 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://macbook:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>How to Make a Tech Explainer That&#39;s Actually Good</title>
+				<link>http://macbook:1313/posts/canonitech/</link>
+				<pubDate>Wed, 15 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://macbook:1313/posts/canonitech/</guid>
+				<description>&lt;p&gt;&lt;img src=&#34;./workshop-photo.jpg&#34; alt=&#34;Photo of me presenting a workshop&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;When I was on the design team at Canonical, I developed a kind of reputation as the &amp;ldquo;tech explainer&amp;rdquo; guy. While most of my colleagues had pure design backgrounds, and needed to learn all of their linux concepts from scratch after joining the company, I had been a linux nerd long before I was a designer, and I spent my first year at Canonical working in the technical support team. This meant that when designers needed to create an interface for some advanced feature of their product, they would often come to me for help wrapping their heads around some of the underlying concepts.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Redesigning Notifications for LXD</title>
+				<link>http://macbook:1313/posts/notifications/</link>
+				<pubDate>Mon, 11 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://macbook:1313/posts/notifications/</guid>
+				<description>&lt;p&gt;Back in 2024, I was tasked with overhauling the notification experience within LXD UI. The notifications themselves looked visually fine, but the experience of when they appeared and how one interacted with them was terrible.&lt;/p&gt;&#xA;&lt;p&gt;The process of redesigning them taught me a lot about UX, and I think it&amp;rsquo;s a great case study of what makes UX design a distinct discipline from visual design.&lt;/p&gt;&#xA;&lt;h2 id=&#34;notifications-in-lxd&#34;&gt;Notifications in LXD&lt;/h2&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re not familiar with LXD, it&amp;rsquo;s a hypervisor for containers and virtual machines that runs on Linux. As well as a traditional command line interface, LXD also has a UI that runs in the browser. The UI allows users to carry out actions like creating, starting, and stopping their containers and virtual machines, as well as managing other virtualization resources inside of LXD.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Visualizing networks in LXD</title>
+				<link>http://macbook:1313/posts/ovn-networking/</link>
+				<pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://macbook:1313/posts/ovn-networking/</guid>
+				<description>&lt;p&gt;As a designer for a company like Canonical, you often find yourself designing experiences around very complex technical concepts.&lt;/p&gt;&#xA;&lt;p&gt;When I was a designer there, I was responsible for a product called LXD. LXD is a hypervisor for linux containers and virtual machines. It&amp;rsquo;s been around for a long time, and until a couple years ago, was a CLI-only app. My job was to design LXD-UI, a web interface that allowed users to do everything they could do in the CLI. Because LXD is such a mature product, there was a lot of functionality to replicate, some of it quite advanced for people without an engineering background.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

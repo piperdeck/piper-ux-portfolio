@@ -1,0 +1,13 @@
+baseURL = 'https://example.org/'
+locale = 'en-us'
+title = "Piper Deck"
+theme = 'piper'
+
+# [menu]
+#  [[menu.main]]
+#    identifier = "posts"
+#    name = "Posts"
+#    url = "/posts"
+
+[markup.goldmark.renderer]
+  unsafe = true
