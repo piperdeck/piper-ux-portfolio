@@ -1,4 +1,4 @@
-baseURL = 'https://piperdeck.github.io/piper-ux-portfolio/'
+baseURL = 'https://piperdeck.net'
 locale = 'en-us'
 title = "pipe|R deck"
 theme = 'piper'
