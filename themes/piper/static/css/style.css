@@ -40,6 +40,12 @@ body {
   scroll-behavior: smooth !important;
 }
 
+footer {
+  margin-top: 25vh;
+  opacity: 0.5;
+  color: #2E294E;
+}
+
 .logo {
   font-family: "Monaspace Neon Var";
 }
