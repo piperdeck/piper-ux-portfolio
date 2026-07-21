@@ -28,7 +28,7 @@ Over the course of writing these workshops (which were nicknamed Canonitech), I 
           <td>Build up your topic from its most basic principles, using ‘Problem → Solution’ to motivate each jump in complexity</td>
       </tr>
       <tr>
-          <td scope="row"><a href="#p3">Diagrams &gt; Words</a></td>
+          <td scope="row"><a href="#p3">Diagrams → Words</a></td>
           <td>Visual aides are not supplemental. They are the backbone of a good explanation.</td>
       </tr>
   </tbody>
