@@ -5,7 +5,7 @@ table.summary-table {
 }
 
 .summary-table td:nth-child(1) {
-  min-width: 11rem;
+  min-width: 12rem;
   font-weight: bold;
 }
 
